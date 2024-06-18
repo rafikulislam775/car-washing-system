@@ -1,0 +1,7 @@
+node_modules
+note.txt
+note2.txt
+extra.md
+dist
+.env
+.vercel
