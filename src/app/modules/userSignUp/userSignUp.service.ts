@@ -1,16 +1,3 @@
-// import { TUserSignUp } from "./userSignUP.interface";
-// import { signUpModel } from "./userSignUP.model";
-
-// const createUserIntoDB = async (payload: TUserSignUp) => {
-//   console.log(`eta service payload${payload}`);
-//   const result = await signUpModel.create(payload);
-//   return result;
-// };
-
-// export const SignUpServices = {
-//   createUserIntoDB,
-// };
-
 import { TUserSignUp } from "./userSignUP.interface";
 import { signUpModel } from "./userSignUP.model";
 

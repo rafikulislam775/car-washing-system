@@ -1,7 +1,4 @@
 export type TUser = {
-  name: string;
-  description: string;
-  price: number;
-  duration: number;
-  isDeleted: false;
+  email: string;
+  password: string;
 };
