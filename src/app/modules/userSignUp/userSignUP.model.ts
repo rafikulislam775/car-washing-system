@@ -59,11 +59,12 @@ userSinUpSchema.pre("save", async function (next) {
   );
   next();
 });
-// password e onn kiso show korab
-userSinUpSchema.post("save", function (doc, next) {
-  // ekane amra doc and next fuc k pai
-  console.log(doc);
-  console.log(this, "that is the pre data");
-});
+// // password e onn kiso show korab
+// userSinUpSchema.post("save", function (doc, next) {
+//   // ekane amra doc and next fuc k pai
+//   // console.log(doc); //get is whole doc
+
+//   next();
+// });
 // crated a model
 export const signUpModel = model<TUserSignUp>("UserSignUp", userSinUpSchema);

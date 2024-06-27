@@ -3,9 +3,11 @@ import { signUpModel } from "./userSignUP.model";
 
 const createUserIntoDB = async (payload: TUserSignUp) => {
   try {
-    // console.log(`Service payload: ${JSON.stringify(payload)}`);
     const result = await signUpModel.create(payload);
-    return result;
+    // Convert the result to an object and remove the password field
+    const userObject: any = result.toObject();
+    delete userObject.password;
+    return userObject;
   } catch (error) {
     throw new Error(`Error creating user: ${error.message}`);
   }
