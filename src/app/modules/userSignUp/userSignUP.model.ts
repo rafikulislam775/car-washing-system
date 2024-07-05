@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/no-this-alias */
 
 import { Schema, model } from "mongoose";
-import { TUserSignUp } from "./userSignUP.interface";
+import { TUserSignUp, UserModel } from "./userSignUP.interface";
 import { Role } from "./userSignUp.constant";
 import bcrypt from "bcrypt";
 import config from "../../../config";
 
-const userSinUpSchema = new Schema<TUserSignUp>(
+const userSinUpSchema = new Schema<TUserSignUp, UserModel>(
   {
     name: {
       type: String,
@@ -66,5 +66,22 @@ userSinUpSchema.pre("save", async function (next) {
 
 //   next();
 // });
+//custom function
+
+// Static method to check if user exists by email
+userSinUpSchema.statics.isUserExistByEmail = async function (email: string) {
+  return this.findOne({ email });
+};
+
+// Static method to check if password match
+userSinUpSchema.statics.isPasswordMatch = async function (
+  plainPassword,
+  dbHashedPassword
+) {
+  return await bcrypt.compare(plainPassword, dbHashedPassword);
+};
 // crated a model
-export const signUpModel = model<TUserSignUp>("UserSignUp", userSinUpSchema);
+export const signUpModel = model<TUserSignUp, UserModel>(
+  "UserSignUp",
+  userSinUpSchema
+);

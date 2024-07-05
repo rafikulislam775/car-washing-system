@@ -1,10 +1,25 @@
+/* eslint-disable no-unused-vars */
+import { Model } from "mongoose";
+
+// Define TRole as a union type of "admin" or "user"
 export type TRole = "admin" | "user";
 
-export type TUserSignUp = {
+// Define TUserSignUp interface for user sign-up data
+export interface TUserSignUp {
   name: string;
   email: string;
   password: string;
   phone: string;
   role: TRole;
   address: string;
-};
+}
+
+// Define UserModel extending Mongoose Model with custom static methods
+export interface UserModel extends Model<TUserSignUp> {
+  // custom static methods for use any ware
+  isUserExistByEmail(email: string): Promise<TUserSignUp>;
+  isPasswordMatch(
+    plainPassword: string, // give the user a password
+    dbHashedPassword: string //coming from the database
+  ): Promise<boolean>;
+}
