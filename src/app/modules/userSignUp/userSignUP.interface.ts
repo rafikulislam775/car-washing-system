@@ -6,6 +6,7 @@ export type TRole = "admin" | "user";
 
 // Define TUserSignUp interface for user sign-up data
 export interface TUserSignUp {
+  [x: string]: any;
   name: string;
   email: string;
   password: string;
