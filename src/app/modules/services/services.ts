@@ -1,3 +1,5 @@
+import httpStatus from "http-status";
+import AppError from "../../../errors/AppError";
 import { ServicesModel } from "./service.model";
 import { TServices } from "./services.interface";
 
@@ -5,8 +7,9 @@ const createServicesIntoDB = async (payload: TServices) => {
   try {
     const result = await ServicesModel.create(payload);
     return result;
-  } catch (error) {
-    throw new Error(`Error creating user: ${error.message}`);
+  } catch (err) {
+    // throw new Error(`Error creating user: ${error.message}`);
+    throw new AppError(httpStatus.BAD_REQUEST, "Failed to Created Services");
   }
 };
 //get all services
@@ -14,8 +17,8 @@ const getAllServices = async (payload: TServices) => {
   try {
     const result = await ServicesModel.find(payload);
     return result;
-  } catch (error) {
-    throw new Error(`Error creating user: ${error.message}`);
+  } catch (err) {
+    throw new AppError(httpStatus.BAD_REQUEST, "Failed to Get all Services");
   }
 };
 export const AllServices = {
