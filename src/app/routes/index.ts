@@ -17,6 +17,7 @@ const allRoutes = [
     path: "/",
     route: servicesRoute,
   },
+
 ];
 
 allRoutes.forEach((route) => router.use(route.path, route.route));

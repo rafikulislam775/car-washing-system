@@ -8,7 +8,8 @@ const router = express.Router();
 router.post(
   "/services",
   validateRequest(serviceValidations.serviceValidationSchema),
-  servicesControllers.services
+  servicesControllers.createServices
 );
+router.get("/services", servicesControllers.findAllServices);
 
 export const servicesRoute = router;
