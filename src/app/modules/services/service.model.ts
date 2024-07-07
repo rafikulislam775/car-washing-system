@@ -1,5 +1,5 @@
 import { Schema, model } from "mongoose";
-import { TServices } from "./services";
+import { TServices } from "./services.interface";
 // 2. Create a Schema corresponding to the document interface.
 
 const servicesSchema = new Schema<TServices>(
@@ -26,4 +26,4 @@ const servicesSchema = new Schema<TServices>(
 );
 
 // 3. Create a Model.
-export const Services = model<TServices>("Services", servicesSchema);
+export const ServicesModel = model<TServices>("Services", servicesSchema);
