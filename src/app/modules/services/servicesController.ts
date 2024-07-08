@@ -70,9 +70,24 @@ const updateSingleServices = catchAsync(async (req, res) => {
     data: result,
   });
 });
+//delete single service by id 
+const deleteSingleServices = catchAsync(async (req, res,)=>{
+  const { id } = req.params;
+
+  // console.log(id);
+  const result = await AllServices.deleteSingleServices(id);
+  res.status(200).json({
+    success: true,
+    statusCode: 200,
+    message: "Service deleted successfully",
+    data: result,
+  });
+ });
+
 export const servicesControllers = {
   createServices,
   findAllServices,
   findSingleServices,
   updateSingleServices,
+  deleteSingleServices,
 };

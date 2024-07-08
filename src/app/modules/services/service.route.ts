@@ -16,5 +16,6 @@ router.get("/:id", servicesControllers.findSingleServices);
 //update single services
 router.patch("/:id",validateRequest(serviceValidations.UpdateServiceValidationSchema),
    servicesControllers.updateSingleServices)
-
+//delete single services by id 
+router.delete("/:id", servicesControllers.deleteSingleServices)
 export const servicesRoute = router;
