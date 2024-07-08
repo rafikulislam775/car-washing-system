@@ -14,10 +14,9 @@ const allRoutes = [
     route: AuthRouter,
   },
   {
-    path: "/",
+    path: "/services",
     route: servicesRoute,
   },
-
 ];
 
 allRoutes.forEach((route) => router.use(route.path, route.route));

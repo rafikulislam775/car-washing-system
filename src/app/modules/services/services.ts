@@ -21,7 +21,13 @@ const getAllServices = async (payload: TServices) => {
     throw new AppError(httpStatus.BAD_REQUEST, "Failed to Get all Services");
   }
 };
+//get single service by id 
+const getSingleServices = async (id:string) => {
+const result = await ServicesModel.findById(id)
+return result;
+}
 export const AllServices = {
   createServicesIntoDB,
   getAllServices,
+  getSingleServices,
 };

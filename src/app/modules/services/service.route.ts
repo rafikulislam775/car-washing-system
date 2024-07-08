@@ -6,10 +6,12 @@ import { servicesControllers } from "./servicesController";
 const router = express.Router();
 
 router.post(
-  "/services",
+  "/",
   validateRequest(serviceValidations.serviceValidationSchema),
   servicesControllers.createServices
 );
-router.get("/services", servicesControllers.findAllServices);
+router.get("/", servicesControllers.findAllServices);
+//get single services by id
+router.get("/:id", servicesControllers.findSingleServices);
 
 export const servicesRoute = router;
