@@ -13,5 +13,8 @@ router.post(
 router.get("/", servicesControllers.findAllServices);
 //get single services by id
 router.get("/:id", servicesControllers.findSingleServices);
+//update single services
+router.patch("/:id",validateRequest(serviceValidations.UpdateServiceValidationSchema),
+   servicesControllers.updateSingleServices)
 
 export const servicesRoute = router;

@@ -46,19 +46,33 @@ const findAllServices = catchAsync(async (req, res) => {
   });
 });
 //get single service by id 
-const findSingleServices = catchAsync(async(req, res) => {
-  const {id} = req.params;
-  console.log(id);
+const findSingleServices = catchAsync(async (req, res) => {
+  const { id } = req.params;
+  // console.log(id);
   const result = await AllServices.getSingleServices(id);
   res.status(200).json({
     success: true,
     statusCode: 200,
     message: "Service fetched successfully",
     data: result,
-  })
-})
+  });
+});
+//update single service
+const updateSingleServices = catchAsync(async (req, res) => {
+  const { id } = req.params;
+  const servicesData = req.body;
+  // console.log(id, servicesData);
+  const result = await AllServices.updateSingleServices(id, servicesData);
+  res.status(200).json({
+    success: true,
+    statusCode: 200,
+    message: "Service updated successfully",
+    data: result,
+  });
+});
 export const servicesControllers = {
   createServices,
   findAllServices,
-  findSingleServices
+  findSingleServices,
+  updateSingleServices,
 };

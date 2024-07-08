@@ -26,8 +26,15 @@ const getSingleServices = async (id:string) => {
 const result = await ServicesModel.findById(id)
 return result;
 }
+//update single service
+const updateSingleServices = async(id:string, payload: Partial<TServices>)=>{
+  // console.log(id,payload)
+  const result = await ServicesModel.findByIdAndUpdate(id, payload, {new: true});
+  return result;
+}
 export const AllServices = {
   createServicesIntoDB,
   getAllServices,
   getSingleServices,
+  updateSingleServices
 };
