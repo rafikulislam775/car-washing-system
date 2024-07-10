@@ -1,4 +1,3 @@
-import { Request, Response } from "express";
 import { AllServices } from "./services";
 import catchAsync from "../../utils/catchAsync";
 import sendResponse from "../../utils/sendResponse";
@@ -45,7 +44,7 @@ const findAllServices = catchAsync(async (req, res) => {
     data: result,
   });
 });
-//get single service by id 
+//get single service by id
 const findSingleServices = catchAsync(async (req, res) => {
   const { id } = req.params;
   // console.log(id);
@@ -70,8 +69,8 @@ const updateSingleServices = catchAsync(async (req, res) => {
     data: result,
   });
 });
-//delete single service by id 
-const deleteSingleServices = catchAsync(async (req, res,)=>{
+//delete single service by id
+const deleteSingleServices = catchAsync(async (req, res) => {
   const { id } = req.params;
 
   // console.log(id);
@@ -82,7 +81,7 @@ const deleteSingleServices = catchAsync(async (req, res,)=>{
     message: "Service deleted successfully",
     data: result,
   });
- });
+});
 
 export const servicesControllers = {
   createServices,
