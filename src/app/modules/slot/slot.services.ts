@@ -42,7 +42,28 @@ const createSlotIntoDB = async (payload: TSlot) => {
   }
   return slots;
 };
+// get all slots from the database sorting by date and servicesId
+const getAvailability = async (query: Record<string, unknown>) => {
+  // Destructure date and serviceId from the query parameters
+  const { date, serviceId } = query;
+
+  // Validate the query parameters
+  if (!date || !serviceId) {
+    throw new Error('Date and serviceId are required');
+  }
+
+  // Query the slotModel for slots that match the provided date and serviceId
+  const slots = await slotModel
+  .find({
+    date,
+    'service._id': serviceId,
+  })
+  .populate('Services') // Populate the service field
+  .sort({ date: 1, startTime: 1 }); // Sort by date and then by start time
+return slots
+};
+
 
 export const slotServices = {
-  createSlotIntoDB,
+  createSlotIntoDB,getAvailability
 };

@@ -26,6 +26,7 @@ import sendResponse from "../../utils/sendResponse";
 // create service
 const createServices = catchAsync(async (req, res) => {
   const servicesData = req.body;
+  // console.log(servicesData);
   const result = await AllServices.createServicesIntoDB(servicesData);
   sendResponse(res, {
     success: true,
@@ -36,6 +37,7 @@ const createServices = catchAsync(async (req, res) => {
 });
 // get all services
 const findAllServices = catchAsync(async (req, res) => {
+  // console.log("test service", req.user);
   const result = await AllServices.getAllServices(req.body);
   sendResponse(res, {
     success: true,
